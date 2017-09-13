@@ -280,7 +280,7 @@ class DragableLayoutBehavior(object):
             if not touch.ud.get(self._touch_uid()):
                 # we haven't dealt with this before
                 if self.collide_point(*touch.pos) and \
-                    touch.ud.get('drag_cls') in self.drag_classes:
+                        touch.ud.get('drag_cls') in self.drag_classes:
                     if super(DragableLayoutBehavior, self).on_touch_move(touch):
                         return True
                     touch.grab(self)
@@ -294,7 +294,7 @@ class DragableLayoutBehavior(object):
         else:
             x, y = touch.pos
             if not self.collide_point(x, y) or \
-                touch.ud.get('drag_cls') not in self.drag_classes:
+                    touch.ud.get('drag_cls') not in self.drag_classes:
                 touch.ungrab(self)
                 del touch.ud[self._touch_uid()]
                 if spacer.parent:
@@ -346,7 +346,7 @@ class DragableLayoutBehavior(object):
             if not touch.ud.get(self._touch_uid()):
                 # we haven't dealt with this before
                 if self.collide_point(*touch.pos) and \
-                    touch.ud.get('drag_cls') in self.drag_classes:
+                        touch.ud.get('drag_cls') in self.drag_classes:
                     if super(DragableLayoutBehavior, self).on_touch_up(touch):
                         return True
                     x, y = touch.pos
@@ -360,7 +360,7 @@ class DragableLayoutBehavior(object):
             del touch.ud[self._touch_uid()]
             x, y = touch.pos
             if not self.collide_point(x, y) or \
-                touch.ud.get('drag_cls') not in self.drag_classes:
+                    touch.ud.get('drag_cls') not in self.drag_classes:
                 if spacer.parent:
                     self.remove_widget(spacer)
                 return False
