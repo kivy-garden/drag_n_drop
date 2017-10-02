@@ -10,6 +10,8 @@ from kivy.lang.builder import Builder
 from kivy.core.window import Window
 from kivy.config import Config
 
+from cplcom.utils import collide_parent_tree
+
 _drag_distance = 0
 if Config:
     _drag_distance = '{}sp'.format(Config.getint('widgets', 'scroll_distance'))
@@ -293,8 +295,8 @@ class DragableLayoutBehavior(object):
                 return True
         else:
             x, y = touch.pos
-            if not self.collide_point(x, y) or \
-                    touch.ud.get('drag_cls') not in self.drag_classes:
+            if touch.ud.get('drag_cls') not in self.drag_classes or \
+                    not collide_parent_tree(self, x, y):
                 touch.ungrab(self)
                 del touch.ud[self._touch_uid()]
                 if spacer.parent:
@@ -359,8 +361,8 @@ class DragableLayoutBehavior(object):
             touch.ungrab(self)
             del touch.ud[self._touch_uid()]
             x, y = touch.pos
-            if not self.collide_point(x, y) or \
-                    touch.ud.get('drag_cls') not in self.drag_classes:
+            if touch.ud.get('drag_cls') not in self.drag_classes or \
+                    not collide_parent_tree(self, x, y):
                 if spacer.parent:
                     self.remove_widget(spacer)
                 return False
