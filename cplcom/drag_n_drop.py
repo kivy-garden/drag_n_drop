@@ -219,7 +219,7 @@ class DragableController(EventDispatcher):
                 self.dragging = True
                 self.preview_widget.canvas.opacity = .4
                 touch.ud['drag_cls'] = source.drag_cls
-                touch.ud['drag_widget'] = source
+                touch.ud['drag_widget'] = source.drag_widget or source
                 source.initiate_drag()
             else:
                 return False
