@@ -219,7 +219,7 @@ class DragableController(EventDispatcher):
                 self.dragging = True
                 self.preview_widget.canvas.opacity = .4
                 touch.ud['drag_cls'] = source.drag_cls
-                touch.ud['drag_widget'] = source.drag_widget or source
+                touch.ud['drag_widget'] = source
                 source.initiate_drag()
             else:
                 return False
@@ -416,7 +416,7 @@ if __name__ == '__main__':
             return 'before' if pos[0] < widget.center_x else 'after'
 
         def handle_drag_release(self, index, drag_widget):
-            self.add_widget(drag_widget, index)
+            self.add_widget(drag_widget.drag_widget or drag_widget, index)
 
     class DragLabel(DragableObjectBehavior, Label):
 
