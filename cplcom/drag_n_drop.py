@@ -304,7 +304,7 @@ class DraggableController(EventDispatcher):
 
     preview_pixels = None
 
-    widget_dragged = None
+    widget_dragged = ObjectProperty(None, rebind=True, allownone=True)
     """The :class:`DraggableObjectBehavior` widget currently being dragged by
     the controller.
     """
@@ -313,7 +313,7 @@ class DraggableController(EventDispatcher):
 
     touch_dy = 0
 
-    dragging = False
+    dragging = BooleanProperty(False)
 
     start_widget_pos = 0, 0
 
