@@ -256,6 +256,8 @@ class PreviewWidget(Widget):
     """
 
     preview_texture = ObjectProperty(None)
+    """The texture that is previewed when a widget is being dragged.
+    """
 
 
 class SpacerWidget(Widget):
@@ -316,6 +318,8 @@ class DraggableController(EventDispatcher):
     touch_dy = 0
 
     dragging = BooleanProperty(False)
+    """Whether the controller is currently dragging something.
+    """
 
     start_widget_pos = 0, 0
 
