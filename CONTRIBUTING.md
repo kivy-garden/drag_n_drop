@@ -21,8 +21,8 @@ provided.
   evaluated by Coveralls, so you'll get a report about your contribution
   breaking any test, and the evolution of coverage, but you can also check that
   locally before sending the contribution, by using `pytest --cov-report
-  term-missing --cov kivy_garden.flower`, you can also use `pytest --cov-report html --cov
-  kivy_garden.flower` to get an html report that you can open in your browser.
+  term-missing --cov kivy_garden.drag_n_drop`, you can also use `pytest --cov-report html --cov
+  kivy_garden.drag_n_drop` to get an html report that you can open in your browser.
 
 - Please try to conform to the style of the codebase, if you have a question,
   just ask.

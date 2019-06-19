@@ -1,37 +1,33 @@
-kivy-garden demo flower
+kivy-garden Drag-N-Drop
 ========================
 
-[![Coverage Status](https://coveralls.io/repos/github/kivy-garden/flower/badge.svg?branch=master)](https://coveralls.io/github/kivy-garden/flower?branch=master)
-[![Build Status](https://travis-ci.com/kivy-garden/flower.svg?branch=master)](https://travis-ci.com/kivy-garden/flower)
+[![Coverage Status](https://coveralls.io/repos/github/kivy-garden/drag_n_drop/badge.svg?branch=master)](https://coveralls.io/github/kivy-garden/drag_n_drop?branch=master)
+[![Build Status](https://travis-ci.com/kivy-garden/drag_n_drop.svg?branch=master)](https://travis-ci.com/kivy-garden/drag_n_drop)
 
-A kivy garden flower that shows how to add flowers.
+A kivy garden flower that can drag and drop widgets between Kivy layouts.
 
-See https://kivy-garden.github.io/flower/ for the rendered flower docs.
+See https://kivy-garden.github.io/drag_n_drop/ for the rendered drag_n_drop docs.
 
 Please see the garden [instructions](https://kivy-garden.github.io) for how to use kivy garden flowers.
 
 Flower information
 -------------------
 
-A kivy garden flower demo.
+A kivy garden flower that can drag and drop widgets between Kivy layouts. Please see the module documentation for more information.
 
 Install
 ---------
 
-```sh
-pip install kivy_garden.flower
-```
+See [here](https://kivy-garden.github.io/index.html#generalusageguidelines).
 
 #### Usage
 
-```py
-do_something
-```
+See the docs for examples.
 
 TODO
 -------
 
-* add your code
+*
 
 Contributing
 --------------

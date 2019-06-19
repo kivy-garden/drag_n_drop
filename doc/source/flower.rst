@@ -1,13 +1,13 @@
 .. _flower-api:
 
-******
-Flower
-******
+************
+Drag-N-Drop
+************
 
-:mod:`kivy_garden.flower`
+:mod:`kivy_garden.drag_n_drop`
 =============================
 
-.. automodule:: kivy_garden.flower
+.. automodule:: kivy_garden.drag_n_drop
    :members:
    :undoc-members:
    :show-inheritance:

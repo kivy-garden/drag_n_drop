@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Flower's documentation!
-==================================
+Welcome to Drag-N-Drop's documentation!
+=======================================
 
 .. toctree::
    :maxdepth: 2

@@ -121,6 +121,8 @@ __all__ = (
     'DraggableObjectBehavior', 'DraggableLayoutBehavior', 'DraggableController',
     'PreviewWidget', 'SpacerWidget')
 
+__version__ = '0.1.0'
+
 _drag_distance = 0
 if Config:
     _drag_distance = '{}sp'.format(Config.getint('widgets', 'scroll_distance'))
