@@ -712,73 +712,79 @@ BoxLayout:
     DraggableBoxLayout:
         drag_classes: ['label']
         orientation: 'vertical'
+        padding: '5dp'
+        spacing: '5dp'
         canvas:
             Color:
-                rgba: (1, 1, 1, .2) if \
+                rgba: (1, 0, 1, .2) if \
 app.drag_controller.dragging and app.drag_controller.widget_dragged and \
 app.drag_controller.widget_dragged.drag_cls == 'label' else (0, 0, 0, 0)
             Rectangle:
                 pos: self.pos
                 size: self.size
         Label:
-            text: 'A'
+            text: 'A1'
         Label:
-            text: 'A'
+            text: 'A2'
         Label:
-            text: 'A'
+            text: 'A3'
         Label:
-            text: 'A'
+            text: 'A4'
         Label:
-            text: 'A'
+            text: 'A5'
         Label:
-            text: 'A'
+            text: 'A6'
         DraggableBoxLayout:
             padding: '20dp', 0
+            spacing: '5dp'
             drag_classes: ['label2']
             orientation: 'vertical'
+            size_hint_y: 2.5
             canvas:
                 Color:
-                    rgba: (1, 1, 1, .2) if \
+                    rgba: (1, 1, 0, .2) if \
 app.drag_controller.dragging and app.drag_controller.widget_dragged and \
 app.drag_controller.widget_dragged.drag_cls == 'label2' else (0, 0, 0, 0)
                 Rectangle:
                     pos: self.pos
                     size: self.size
             Label:
-                text: 'B'
+                text: 'B1'
             Label:
-                text: 'B'
+                text: 'B2'
             Label:
-                text: 'B'
+                text: 'B3'
     DraggableBoxLayout:
         drag_classes: ['label', 'label2']
         orientation: 'vertical'
+        padding: '5dp'
+        spacing: '5dp'
         canvas:
             Color:
-                rgba: (1, 1, 1, .2) if app.drag_controller.dragging else (0, 0, 0, 0)
+                rgba: (0, 1, 1, .2) if app.drag_controller.dragging else (0, 0, 0, 0)
             Rectangle:
                 pos: self.pos
                 size: self.size
         DragLabel:
-            text: 'A*'
+            text: 'A1*'
             drag_cls: 'label'
         DragLabel:
-            text: 'B*'
+            text: 'B1*'
             drag_cls: 'label2'
         DragLabel:
-            text: 'A*'
+            text: 'A2*'
             drag_cls: 'label'
         DragLabel:
-            text: 'B*'
+            text: 'B2*'
             drag_cls: 'label2'
         DragLabel:
-            text: 'A*'
+            text: 'A3*'
             drag_cls: 'label'
         DragLabel:
-            text: 'B*'
+            text: 'B3*'
             drag_cls: 'label2'
         DragLabel:
-            text: 'A*'
+            text: 'A4*'
             drag_cls: 'label'
     '''
 

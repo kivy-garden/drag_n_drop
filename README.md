@@ -15,6 +15,8 @@ Flower information
 
 A kivy garden flower that can drag and drop widgets between Kivy layouts. Please see the module documentation for more information.
 
+[![Drag-N-Drop flower](http://img.youtube.com/vi/lkipYuGuDf4/0.jpg)](https://www.youtube.com/watch?v=lkipYuGuDf4 "Kivy-garden drag_n_drop flower")
+
 Install
 ---------
 
