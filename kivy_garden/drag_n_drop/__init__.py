@@ -149,7 +149,7 @@ class DraggableObjectBehavior(object):
     someone dragging it with the mouse.
     """
 
-    drag_controller = ObjectProperty(None)
+    drag_controller = ObjectProperty(None, allownone=True)
     """A (potentially global) :class:`DraggableController` instance that manages
     the (potential) drag. If `None` during the first potential drag, a
     :class:`DraggableController` instance will be created and set.
@@ -571,7 +571,7 @@ class DraggableLayoutBehavior(object):
         if widget == spacer:
             index = self.children.index(spacer)
         elif widget is None:
-            index = len(self.children)
+            index = 0
         else:
             if self.compare_pos_to_widget(widget, (x, y)) == 'before':
                 index = self.children.index(widget) + 1
