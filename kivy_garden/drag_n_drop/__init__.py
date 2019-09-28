@@ -119,7 +119,8 @@ from kivy.config import Config
 
 __all__ = (
     'DraggableObjectBehavior', 'DraggableLayoutBehavior', 'DraggableController',
-    'PreviewWidget', 'SpacerWidget')
+    'PreviewWidget', 'SpacerWidget', 'DraggableBoxLayoutBehavior',
+    'DraggableGridLayoutBehavior')
 
 __version__ = '0.1.0'
 
@@ -472,7 +473,8 @@ class DraggableLayoutBehavior(object):
 
     def __init__(self, **kwargs):
         super(DraggableLayoutBehavior, self).__init__(**kwargs)
-        self.spacer_widget = SpacerWidget()
+        if self.spacer_widget is None:
+            self.spacer_widget = SpacerWidget()
         self.fbind('spacer_props', self._track_spacer_props)
         self._track_spacer_props()
 
@@ -676,9 +678,39 @@ class DraggableLayoutBehavior(object):
         return True
 
 
+class DraggableBoxLayoutBehavior(DraggableLayoutBehavior):
+    def compare_pos_to_widget(self, widget, pos):
+        if self.orientation == 'vertical':
+            return 'before' if pos[1] >= widget.center_y else 'after'
+        return 'before' if pos[0] < widget.center_x else 'after'
+
+
+class DraggableGridLayoutBehavior(DraggableLayoutBehavior):
+    def compare_pos_to_widget(self, widget, pos):
+        x, y = pos
+        if y > widget.top:
+            return 'before'
+        elif y < widget.y:
+            return 'after'
+        elif x > widget.right:
+            return 'after'
+        elif x < widget.x:
+            return 'before'
+        else:
+            spacer = self.spacer_widget
+            if widget.parent is spacer.parent:
+                children = widget.parent.children
+                if children.index(spacer) > children.index(widget):
+                    return 'after'
+        return 'before'
+
+
 Factory.register('DraggableObjectBehavior', DraggableObjectBehavior)
 Factory.register('DraggableController', DraggableController)
 Factory.register('DraggableLayoutBehavior', DraggableLayoutBehavior)
+Factory.register('DraggableBoxLayoutBehavior', DraggableBoxLayoutBehavior)
+Factory.register('DraggableGridLayoutBehavior', DraggableGridLayoutBehavior)
+
 
 if __name__ == '__main__':
     from kivy.app import App
@@ -687,13 +719,7 @@ if __name__ == '__main__':
 
     drag_controller = DraggableController()
 
-    class DraggableBoxLayout(DraggableLayoutBehavior, BoxLayout):
-
-        def compare_pos_to_widget(self, widget, pos):
-            if self.orientation == 'vertical':
-                return 'before' if pos[1] >= widget.center_y else 'after'
-            return 'before' if pos[0] < widget.center_x else 'after'
-
+    class DraggableBoxLayout(DraggableBoxLayoutBehavior, BoxLayout):
         def handle_drag_release(self, index, drag_widget):
             self.add_widget(drag_widget, index)
 
