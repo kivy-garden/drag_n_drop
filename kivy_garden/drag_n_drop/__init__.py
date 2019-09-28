@@ -473,7 +473,8 @@ class DraggableLayoutBehavior(object):
 
     def __init__(self, **kwargs):
         super(DraggableLayoutBehavior, self).__init__(**kwargs)
-        self.spacer_widget = SpacerWidget()
+        if self.spacer_widget is None:
+            self.spacer_widget = SpacerWidget()
         self.fbind('spacer_props', self._track_spacer_props)
         self._track_spacer_props()
 
