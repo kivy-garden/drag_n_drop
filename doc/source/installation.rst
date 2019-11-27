@@ -20,6 +20,10 @@ Installation
 
 Please see the `garden docs <https://kivy-garden.github.io/>`_ for full installation instructions.
 
+If the drag_n_drop maintainer has uploaded drag_n_drop to
+`pypi <https://pypi.org/>`_, you can just install it with
+`pip install kivy_garden.drag_n_drop`.
+
 You can install drag_n_drop master directly from github with::
 
     python -m pip install https://github.com/kivy-garden/drag_n_drop/archive/master.zip
@@ -40,7 +44,3 @@ don't have to specify it with `--extra-index-url`, add::
     index-url = https://kivy-garden.github.io/simple/
 
 to your `pip.conf <https://pip.pypa.io/en/stable/user_guide/#config-file>`_.
-
-If the drag_n_drop maintainer has uploaded drag_n_drop to
-`pypi <https://pypi.org/>`_, you can just install it with
-`pip install kivy_garden.drag_n_drop`.

@@ -122,7 +122,7 @@ __all__ = (
     'PreviewWidget', 'SpacerWidget', 'DraggableBoxLayoutBehavior',
     'DraggableGridLayoutBehavior')
 
-__version__ = '0.1.0'
+from ._version import __version__
 
 _drag_distance = 0
 if Config:

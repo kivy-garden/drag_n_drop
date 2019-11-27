@@ -1,8 +1,8 @@
 kivy-garden Drag-N-Drop
 ========================
 
+[![Github Build Status](https://github.com/kivy-garden/drag_n_drop/workflows/Garden%20flower/badge.svg)](https://github.com/kivy-garden/drag_n_drop/actions)
 [![Coverage Status](https://coveralls.io/repos/github/kivy-garden/drag_n_drop/badge.svg?branch=master)](https://coveralls.io/github/kivy-garden/drag_n_drop?branch=master)
-[![Build Status](https://travis-ci.com/kivy-garden/drag_n_drop.svg?branch=master)](https://travis-ci.com/kivy-garden/drag_n_drop)
 
 A kivy garden flower that can drag and drop widgets between Kivy layouts.
 
