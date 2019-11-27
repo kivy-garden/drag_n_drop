@@ -23,7 +23,8 @@ Layout
 -------
 
 To use :class:`DraggableLayoutBehavior` with a layout,
-:meth:`DraggableLayoutBehavior.compare_pos_to_widget` must be implement for each
+:meth:`DraggableLayoutBehavior.compare_pos_to_widget` must be implement for
+each
 layout. This determines where in the layout the widget is being previewed and
 ultimitely dropped. But, it can be further customized for any type of layout
 by overwriting the default
@@ -52,13 +53,13 @@ Describing Which Widgets can be Dropped Into Which Layout
 -------------------------------------------------------------
 
 Given some :class:`DraggableObjectBehavior` and
-some :class:`DraggableLayoutBehavior` instances. We can control which widget can
-be dragged into which layout using their
+some :class:`DraggableLayoutBehavior` instances. We can control which widget
+can be dragged into which layout using their
 :attr:`DraggableObjectBehavior.drag_cls` and
 :attr:`DraggableLayoutBehavior.drag_classes`.
 :attr:`DraggableObjectBehavior.drag_cls` must be listed in
-:attr:`DraggableLayoutBehavior.drag_classes` for the widget to be draggable into
-the layout.
+:attr:`DraggableLayoutBehavior.drag_classes` for the widget to be draggable
+into the layout.
 
 Example
 --------
@@ -118,7 +119,8 @@ from kivy.core.window import Window
 from kivy.config import Config
 
 __all__ = (
-    'DraggableObjectBehavior', 'DraggableLayoutBehavior', 'DraggableController',
+    'DraggableObjectBehavior', 'DraggableLayoutBehavior',
+    'DraggableController',
     'PreviewWidget', 'SpacerWidget', 'DraggableBoxLayoutBehavior',
     'DraggableGridLayoutBehavior')
 
@@ -450,17 +452,17 @@ class DraggableLayoutBehavior(object):
     spacer_widget = ObjectProperty(None)
     """The widget that is added to the layout to show where the dragged widget
     could be dropped.
-    
+
     Defaults to :class:`SpacerWidget` if not set.
     """
 
     drag_classes = ListProperty([])
     """During a drag, the controller will try to preview and add the dragged
     :class:`DraggableObjectBehavior` to this layout widget when it is over the
-    widget's area. But, it will only do it if the dragged widget's 
-    :attr:`DraggableObjectBehavior.drag_cls` is in the layout's 
+    widget's area. But, it will only do it if the dragged widget's
+    :attr:`DraggableObjectBehavior.drag_cls` is in the layout's
     :attr:`drag_classes`.
-    
+
     This allows selecting which widgets can be dropped where.
     """
 
@@ -787,7 +789,8 @@ app.drag_controller.widget_dragged.drag_cls == 'label2' else (0, 0, 0, 0)
         spacing: '5dp'
         canvas:
             Color:
-                rgba: (0, 1, 1, .2) if app.drag_controller.dragging else (0, 0, 0, 0)
+                rgba: (0, 1, 1, .2) \
+if app.drag_controller.dragging else (0, 0, 0, 0)
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -813,7 +816,6 @@ app.drag_controller.widget_dragged.drag_cls == 'label2' else (0, 0, 0, 0)
             text: 'A4*'
             drag_cls: 'label'
     '''
-
 
     class MyApp(App):
 
