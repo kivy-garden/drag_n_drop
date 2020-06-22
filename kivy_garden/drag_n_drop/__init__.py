@@ -108,7 +108,7 @@ And then in kv::
                 drag_cls: 'label'
 """
 from kivy.properties import ObjectProperty, NumericProperty, \
-    StringProperty, ListProperty, DictProperty, BooleanProperty
+    StringProperty, ListProperty, DictProperty, BooleanProperty, ColorProperty
 from kivy.factory import Factory
 from kivy.event import EventDispatcher
 from kivy.uix.widget import Widget
@@ -124,7 +124,7 @@ __all__ = (
     'PreviewWidget', 'SpacerWidget', 'DraggableBoxLayoutBehavior',
     'DraggableGridLayoutBehavior')
 
-from ._version import __version__
+from kivy_garden.drag_n_drop._version import __version__
 
 _drag_distance = 0
 if Config:
@@ -274,11 +274,6 @@ Builder.load_string('''
 <PreviewWidget>:
     canvas:
         Color:
-            rgba: .2, .2, .2, 1
-        Rectangle:
-            size: self.size
-            pos: self.pos
-        Color:
             rgba: 1, 1, 1, 1
         Rectangle:
             size: self.size
@@ -326,6 +321,14 @@ class DraggableController(EventDispatcher):
 
     start_widget_pos = 0, 0
 
+    preview_background_color = ColorProperty((0, 0, 0, 1))
+    """The background color of the preview widget as it's dragged. 
+
+    Defaults to ``rgba=0,0,0,1``, which means the dragging widget will be
+    placed on a black background. To make the background transparent, set it
+    to ``(0, 0, 0, 0)``.
+    """
+
     def __init__(self, **kwargs):
         super(DraggableController, self).__init__(**kwargs)
         self.preview_widget = PreviewWidget(size_hint=(None, None))
@@ -351,7 +354,7 @@ class DraggableController(EventDispatcher):
         fbo = Fbo(size=size, with_stencilbuffer=False)
 
         with fbo:
-            ClearColor(0, 0, 0, 1)
+            ClearColor(*self.preview_background_color)
             ClearBuffers()
             Scale(1, -1, 1)
             Translate(
