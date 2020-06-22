@@ -1,0 +1,663 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Drag-N-Drop &mdash; Drag-N-Drop  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="The Drag-N-Drop API" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Drag-N-Drop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">The Drag-N-Drop API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Drag-N-Drop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-kivy_garden.drag_n_drop"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kivy_garden.drag_n_drop</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#drag-and-drop">Drag and Drop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Drag-N-Drop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">The Drag-N-Drop API</a> &raquo;</li>
+        
+      <li>Drag-N-Drop</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/flower.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="drag-n-drop">
+<span id="flower-api"></span><h1>Drag-N-Drop<a class="headerlink" href="#drag-n-drop" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-kivy_garden.drag_n_drop">
+<span id="kivy-garden-drag-n-drop"></span><h2><a class="reference internal" href="#module-kivy_garden.drag_n_drop" title="kivy_garden.drag_n_drop"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kivy_garden.drag_n_drop</span></code></a><a class="headerlink" href="#module-kivy_garden.drag_n_drop" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="drag-and-drop">
+<h3>Drag and Drop<a class="headerlink" href="#drag-and-drop" title="Permalink to this headline">¶</a></h3>
+<p>This adds a drag and drop functionality to layouts and widgets. There are 2
+primary and one internal component used to have drag and drop:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a>. Each widget that can be dragged needs
+to inherit from this. It has <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableObjectBehavior.drag_cls</span></code></a>, which
+is a string that indicates the <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableLayoutBehavior</span></code></a> instance
+into which the widget can potentially be dropped.</p></li>
+<li><p>The <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableLayoutBehavior</span></code></a>, which any layout that wants to accept
+drop behavior must inherit from. It has a
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableLayoutBehavior.drag_classes</span></code></a>, which determines the
+dragging widgets it accepts - their <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableObjectBehavior.drag_cls</span></code></a>
+must be listed in <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableLayoutBehavior.drag_classes</span></code></a>.</p></li>
+<li><p>Finally, <code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableController`which</span> <span class="pre">manages</span> <span class="pre">the</span> <span class="pre">drag</span> <span class="pre">and</span> <span class="pre">drop</span>
+<span class="pre">coordination.</span> <span class="pre">This</span> <span class="pre">is</span> <span class="pre">created</span> <span class="pre">automatically</span> <span class="pre">for</span> <span class="pre">each</span>
+<span class="pre">:class:`DraggableObjectBehavior.drag_controller</span></code> upon first drag, or it
+can be set by the user to a global controller to save memory.</p></li>
+</ul>
+<div class="section" id="layout">
+<h4>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h4>
+<p>To use <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableLayoutBehavior</span></code></a> with a layout,
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.compare_pos_to_widget" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.compare_pos_to_widget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DraggableLayoutBehavior.compare_pos_to_widget()</span></code></a> must be implement for
+each
+layout. This determines where in the layout the widget is being previewed and
+ultimitely dropped. But, it can be further customized for any type of layout
+by overwriting the default
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_move" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DraggableLayoutBehavior.get_drop_insertion_index_move()</span></code></a> and
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_up" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_up"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DraggableLayoutBehavior.get_drop_insertion_index_up()</span></code></a>.</p>
+<p>Similarly, <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.handle_drag_release" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.handle_drag_release"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle_drag_release()</span></code></a> should be implemented. It handles the
+actual final drop into the layout. A good default implementation is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handle_drag_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">drag_widget</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">drag_widget</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dragging-widget">
+<h4>Dragging Widget<a class="headerlink" href="#dragging-widget" title="Permalink to this headline">¶</a></h4>
+<p>To use <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a>, one should implement
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.initiate_drag" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.initiate_drag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DraggableObjectBehavior.initiate_drag()</span></code></a> and/or
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.complete_drag" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.complete_drag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DraggableObjectBehavior.complete_drag()</span></code></a>. Typically, you would want to
+remove the widget from it’s current layout as it starts to be dragged, with
+e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initiate_drag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">remove_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="describing-which-widgets-can-be-dropped-into-which-layout">
+<h4>Describing Which Widgets can be Dropped Into Which Layout<a class="headerlink" href="#describing-which-widgets-can-be-dropped-into-which-layout" title="Permalink to this headline">¶</a></h4>
+<p>Given some <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> and
+some <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableLayoutBehavior</span></code></a> instances. We can control which widget
+can be dragged into which layout using their
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableObjectBehavior.drag_cls</span></code></a> and
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableLayoutBehavior.drag_classes</span></code></a>.
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableObjectBehavior.drag_cls</span></code></a> must be listed in
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableLayoutBehavior.drag_classes</span></code></a> for the widget to be draggable
+into the layout.</p>
+</div>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>Following is an example with <a class="reference external" href="https://kivy.org/doc/stable/api-kivy.uix.boxlayout.html#kivy.uix.boxlayout.BoxLayout" title="(in Kivy v1.11.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">kivy.uix.boxlayout.BoxLayout</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
+
+<span class="k">class</span> <span class="nc">DraggableBoxLayout</span><span class="p">(</span><span class="n">DraggableLayoutBehavior</span><span class="p">,</span> <span class="n">BoxLayout</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">compare_pos_to_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;vertical&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;before&#39;</span> <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">widget</span><span class="o">.</span><span class="n">center_y</span> <span class="k">else</span> <span class="s1">&#39;after&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;before&#39;</span> <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">widget</span><span class="o">.</span><span class="n">center_x</span> <span class="k">else</span> <span class="s1">&#39;after&#39;</span>
+
+    <span class="k">def</span> <span class="nf">handle_drag_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">drag_widget</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">drag_widget</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DragLabel</span><span class="p">(</span><span class="n">DraggableObjectBehavior</span><span class="p">,</span> <span class="n">Label</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">initiate_drag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># during a drag, we remove the widget from the original location</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">remove_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And then in kv:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BoxLayout</span><span class="p">:</span>
+    <span class="n">DraggableBoxLayout</span><span class="p">:</span>
+        <span class="n">drag_classes</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+        <span class="n">orientation</span><span class="p">:</span> <span class="s1">&#39;vertical&#39;</span>
+        <span class="n">Label</span><span class="p">:</span>
+            <span class="n">text</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span>
+        <span class="n">Label</span><span class="p">:</span>
+            <span class="n">text</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span>
+        <span class="n">Label</span><span class="p">:</span>
+            <span class="n">text</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span>
+    <span class="n">DraggableBoxLayout</span><span class="p">:</span>
+        <span class="n">drag_classes</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+        <span class="n">orientation</span><span class="p">:</span> <span class="s1">&#39;vertical&#39;</span>
+        <span class="n">DragLabel</span><span class="p">:</span>
+            <span class="n">text</span><span class="p">:</span> <span class="s1">&#39;A*&#39;</span>
+            <span class="n">drag_cls</span><span class="p">:</span> <span class="s1">&#39;label&#39;</span>
+        <span class="n">DragLabel</span><span class="p">:</span>
+            <span class="n">text</span><span class="p">:</span> <span class="s1">&#39;A*&#39;</span>
+            <span class="n">drag_cls</span><span class="p">:</span> <span class="s1">&#39;label&#39;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt id="kivy_garden.drag_n_drop.DraggableBoxLayoutBehavior">
+<em class="property">class </em><code class="sig-prename descclassname">kivy_garden.drag_n_drop.</code><code class="sig-name descname">DraggableBoxLayoutBehavior</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableBoxLayoutBehavior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">kivy_garden.drag_n_drop.DraggableLayoutBehavior</span></code></a></p>
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableBoxLayoutBehavior.compare_pos_to_widget">
+<code class="sig-name descname">compare_pos_to_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span></em>, <em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableBoxLayoutBehavior.compare_pos_to_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>After we call <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code> to find the widget in
+<code class="docutils literal notranslate"><span class="pre">children</span></code> that is currently under the given pos (the current mouse
+pos that drags a widget), we call this to find whether the mouse pos
+indicates that the dragged widget needs to be added before or after
+the widget returned by <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code>.</p>
+<p>It must return either the string <cite>“before”</cite>, or <cite>“after”</cite>.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_drop_insertion_index_move()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">get_drop_insertion_index_up()</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="kivy_garden.drag_n_drop.DraggableController">
+<em class="property">class </em><code class="sig-prename descclassname">kivy_garden.drag_n_drop.</code><code class="sig-name descname">DraggableController</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">kivy._event.EventDispatcher</span></code></p>
+<p>The controller that manages the dragging process.</p>
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableController.clean_dragging">
+<code class="sig-name descname">clean_dragging</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.clean_dragging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the drag widget preview.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.drag_distance">
+<code class="sig-name descname">drag_distance</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.drag_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum amount of pixel distance a widget needs to be dragged before
+we start going into drag mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableController.drag_down">
+<code class="sig-name descname">drag_down</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">touch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.drag_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> when it got a touch down.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableController.drag_move">
+<code class="sig-name descname">drag_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">touch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.drag_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> when it got a touch move.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableController.drag_up">
+<code class="sig-name descname">drag_up</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">touch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.drag_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> when it got a touch up.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.dragging">
+<code class="sig-name descname">dragging</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.dragging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the controller is currently dragging something.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableController.prepare_preview_widget">
+<code class="sig-name descname">prepare_preview_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source_widget</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.prepare_preview_widget" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.preview_background_color">
+<code class="sig-name descname">preview_background_color</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.preview_background_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>The background color of the preview widget as it’s dragged.</p>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">rgba=0,0,0,1</span></code>, which means the dragging widget will be
+placed on a black background. To make the background transparent, set it
+to <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.preview_pixels">
+<code class="sig-name descname">preview_pixels</code><em class="property"> = None</em><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.preview_pixels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.preview_widget">
+<code class="sig-name descname">preview_widget</code><em class="property"> = None</em><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.preview_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>The widget shown as preview during a drag, which follows the current
+mouse position. Defaults to a <a class="reference internal" href="#kivy_garden.drag_n_drop.PreviewWidget" title="kivy_garden.drag_n_drop.PreviewWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreviewWidget</span></code></a>.
+that f</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.start_widget_pos">
+<code class="sig-name descname">start_widget_pos</code><em class="property"> = (0, 0)</em><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.start_widget_pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.touch_dx">
+<code class="sig-name descname">touch_dx</code><em class="property"> = 0</em><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.touch_dx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.touch_dy">
+<code class="sig-name descname">touch_dy</code><em class="property"> = 0</em><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.touch_dy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableController.widget_dragged">
+<code class="sig-name descname">widget_dragged</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableController.widget_dragged" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> widget currently being dragged by
+the controller.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="kivy_garden.drag_n_drop.DraggableGridLayoutBehavior">
+<em class="property">class </em><code class="sig-prename descclassname">kivy_garden.drag_n_drop.</code><code class="sig-name descname">DraggableGridLayoutBehavior</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableGridLayoutBehavior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">kivy_garden.drag_n_drop.DraggableLayoutBehavior</span></code></a></p>
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableGridLayoutBehavior.compare_pos_to_widget">
+<code class="sig-name descname">compare_pos_to_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span></em>, <em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableGridLayoutBehavior.compare_pos_to_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>After we call <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code> to find the widget in
+<code class="docutils literal notranslate"><span class="pre">children</span></code> that is currently under the given pos (the current mouse
+pos that drags a widget), we call this to find whether the mouse pos
+indicates that the dragged widget needs to be added before or after
+the widget returned by <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code>.</p>
+<p>It must return either the string <cite>“before”</cite>, or <cite>“after”</cite>.</p>
+<p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_drop_insertion_index_move()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">get_drop_insertion_index_up()</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior">
+<em class="property">class </em><code class="sig-prename descclassname">kivy_garden.drag_n_drop.</code><code class="sig-name descname">DraggableLayoutBehavior</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Adds support to a layout such that we can drag widgets <strong>into</strong> this
+layout and preview it while dragging.</p>
+<p>Only <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> widgets whose
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableObjectBehavior.drag_cls</span></code></a> are in <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drag_classes</span></code></a> will be
+dropable into the layout.</p>
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.compare_pos_to_widget">
+<code class="sig-name descname">compare_pos_to_widget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span></em>, <em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.compare_pos_to_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>After we call <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code></a> to find the widget in
+<code class="docutils literal notranslate"><span class="pre">children</span></code> that is currently under the given pos (the current mouse
+pos that drags a widget), we call this to find whether the mouse pos
+indicates that the dragged widget needs to be added before or after
+the widget returned by <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code></a>.</p>
+<p>It must return either the string <cite>“before”</cite>, or <cite>“after”</cite>.</p>
+<p>See <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_move" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_drop_insertion_index_move()</span></code></a> and
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_up" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_up"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_drop_insertion_index_up()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_append_end">
+<code class="sig-name descname">drag_append_end</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_append_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> when dragged over the
+layout’s area should be previewed and return an index that would add it at
+that location in its children, or if it will only support adding the widget
+to the end of children.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes">
+<code class="sig-name descname">drag_classes</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>During a drag, the controller will try to preview and add the dragged
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> to this layout widget when it is over the
+widget’s area. But, it will only do it if the dragged widget’s
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableObjectBehavior.drag_cls</span></code></a> is in the layout’s
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drag_classes</span></code></a>.</p>
+<p>This allows selecting which widgets can be dropped where.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_move">
+<code class="sig-name descname">get_drop_insertion_index_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>During a drag, it is called with when we need to figure out where
+to display the spacer widget in the layout.</p>
+<p>It calls <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code></a> to find the widget in the layout
+currently under the mouse pos. Then it uses
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.compare_pos_to_widget" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.compare_pos_to_widget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compare_pos_to_widget()</span></code></a> to figure out if it should be added
+before, or after that widget and returns the index in <code class="docutils literal notranslate"><span class="pre">children</span></code>
+where the spacer should be added to represent the potential drop.</p>
+<p>If the spacer is under the current pos, or if no widget is under it
+(<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code></a> returned <code class="docutils literal notranslate"><span class="pre">None</span></code>), we return None,
+otherwise the index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_up">
+<code class="sig-name descname">get_drop_insertion_index_up</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>When dropping a drag, it is called to get the index in children of
+the layout where the widget was dropped and where it needs to be
+inserted.</p>
+<p>It calls <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_widget_under_drag()</span></code></a> to find the widget in the layout
+currently under the mouse pos. Then it uses
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.compare_pos_to_widget" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.compare_pos_to_widget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compare_pos_to_widget()</span></code></a> to figure out if it should be added
+before, or after that widget and returns the index in <code class="docutils literal notranslate"><span class="pre">children</span></code>
+where the it should be added to complete the drop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag">
+<code class="sig-name descname">get_widget_under_drag</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_widget_under_drag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the widget in children that is under the given position
+(current mouse pos that drags the widget).</p>
+<p>See <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_move" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_move"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_drop_insertion_index_move()</span></code></a> and
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_up" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.get_drop_insertion_index_up"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_drop_insertion_index_up()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.handle_drag_release">
+<code class="sig-name descname">handle_drag_release</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">drag_widget</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.handle_drag_release" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called when a widget is dropped in the layout.
+<code class="docutils literal notranslate"><span class="pre">index</span></code> is the index in <cite>children</cite> where the widget should be added.
+<code class="docutils literal notranslate"><span class="pre">drag_widget</span></code> is the <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="kivy_garden.drag_n_drop.DraggableObjectBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableObjectBehavior</span></code></a> that was dropped
+there.</p>
+<p>This must be overwritten by the inherited class to actually do the
+<code class="docutils literal notranslate"><span class="pre">add_widget</span></code> or something else.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.on_touch_move">
+<code class="sig-name descname">on_touch_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">touch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.on_touch_move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.on_touch_up">
+<code class="sig-name descname">on_touch_up</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">touch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.on_touch_up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.spacer_props">
+<code class="sig-name descname">spacer_props</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.spacer_props" title="Permalink to this definition">¶</a></dt>
+<dd><p>The properties of <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.spacer_widget" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.spacer_widget"><code class="xref py py-attr docutils literal notranslate"><span class="pre">spacer_widget</span></code></a>, which will be set according to
+this dict. This enables setting the sizing info for the preview widget in
+the layout.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableLayoutBehavior.spacer_widget">
+<code class="sig-name descname">spacer_widget</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.spacer_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>The widget that is added to the layout to show where the dragged widget
+could be dropped.</p>
+<p>Defaults to <a class="reference internal" href="#kivy_garden.drag_n_drop.SpacerWidget" title="kivy_garden.drag_n_drop.SpacerWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpacerWidget</span></code></a> if not set.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior">
+<em class="property">class </em><code class="sig-prename descclassname">kivy_garden.drag_n_drop.</code><code class="sig-name descname">DraggableObjectBehavior</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A widget that inherits from this class can participate in a drag by
+someone dragging it with the mouse.</p>
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior.complete_drag">
+<code class="sig-name descname">complete_drag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.complete_drag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableController" title="kivy_garden.drag_n_drop.DraggableController"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableController</span></code></a>, when a drag is completed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls">
+<code class="sig-name descname">drag_cls</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls" title="Permalink to this definition">¶</a></dt>
+<dd><p>A name to determine where we can potentially drop the dragged widget.
+For each <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableLayoutBehavior</span></code></a> that we hover over, if
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls" title="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_cls"><code class="xref py py-attr docutils literal notranslate"><span class="pre">drag_cls</span></code></a> is in that <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes" title="kivy_garden.drag_n_drop.DraggableLayoutBehavior.drag_classes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">DraggableLayoutBehavior.drag_classes</span></code></a>, we
+will preview and allow the widget to be dropped there.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_controller">
+<code class="sig-name descname">drag_controller</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_controller" title="Permalink to this definition">¶</a></dt>
+<dd><p>A (potentially global) <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableController" title="kivy_garden.drag_n_drop.DraggableController"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableController</span></code></a> instance that manages
+the (potential) drag. If <cite>None</cite> during the first potential drag, a
+<a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableController" title="kivy_garden.drag_n_drop.DraggableController"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableController</span></code></a> instance will be created and set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_widget">
+<code class="sig-name descname">drag_widget</code><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.drag_widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>The widget, whose texture will be copied and previewed as the object is
+dragged. If <cite>None</cite>, it’s this widget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior.initiate_drag">
+<code class="sig-name descname">initiate_drag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.initiate_drag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by the <a class="reference internal" href="#kivy_garden.drag_n_drop.DraggableController" title="kivy_garden.drag_n_drop.DraggableController"><code class="xref py py-class docutils literal notranslate"><span class="pre">DraggableController</span></code></a>, when a drag is initiated
+on the widget (i.e. thw widget is actually being dragged once it
+exceeds the minimum drag distance).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior.on_touch_down">
+<code class="sig-name descname">on_touch_down</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">touch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.on_touch_down" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior.on_touch_move">
+<code class="sig-name descname">on_touch_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">touch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.on_touch_move" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="kivy_garden.drag_n_drop.DraggableObjectBehavior.on_touch_up">
+<code class="sig-name descname">on_touch_up</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">touch</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.DraggableObjectBehavior.on_touch_up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="kivy_garden.drag_n_drop.PreviewWidget">
+<em class="property">class </em><code class="sig-prename descclassname">kivy_garden.drag_n_drop.</code><code class="sig-name descname">PreviewWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.PreviewWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://kivy.org/doc/stable/api-kivy.uix.widget.html#kivy.uix.widget.Widget" title="(in Kivy v1.11.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">kivy.uix.widget.Widget</span></code></a></p>
+<p>The widget that is used to preview the widget being dragged, during a
+drag. Used internally.</p>
+<dl class="py attribute">
+<dt id="kivy_garden.drag_n_drop.PreviewWidget.preview_texture">
+<code class="sig-name descname">preview_texture</code><a class="headerlink" href="#kivy_garden.drag_n_drop.PreviewWidget.preview_texture" title="Permalink to this definition">¶</a></dt>
+<dd><p>The texture that is previewed when a widget is being dragged.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="kivy_garden.drag_n_drop.SpacerWidget">
+<em class="property">class </em><code class="sig-prename descclassname">kivy_garden.drag_n_drop.</code><code class="sig-name descname">SpacerWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#kivy_garden.drag_n_drop.SpacerWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://kivy.org/doc/stable/api-kivy.uix.widget.html#kivy.uix.widget.Widget" title="(in Kivy v1.11.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">kivy.uix.widget.Widget</span></code></a></p>
+<p>Widget inserted at the location where the dragged widget may be
+dropped to show where it’ll be dropped.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="api.html" class="btn btn-neutral float-left" title="The Drag-N-Drop API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Kivy
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

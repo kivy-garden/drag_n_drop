@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; Drag-N-Drop  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Drag-N-Drop API" href="api.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Drag-N-Drop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="getting_started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-example">Basic Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-example">Advanced Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">The Drag-N-Drop API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Drag-N-Drop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="getting_started.html">Getting Started</a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>To test, run the example code and try to drag the widgets around between
+the various layouts.</p>
+<div class="section" id="basic-example">
+<h2>Basic Example<a class="headerlink" href="#basic-example" title="Permalink to this headline">¶</a></h2>
+<p>Following is an example with <a class="reference external" href="https://kivy.org/doc/stable/api-kivy.uix.boxlayout.html#kivy.uix.boxlayout.BoxLayout" title="(in Kivy v1.11.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">kivy.uix.boxlayout.BoxLayout</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
+
+<span class="k">class</span> <span class="nc">DraggableBoxLayout</span><span class="p">(</span><span class="n">DraggableLayoutBehavior</span><span class="p">,</span> <span class="n">BoxLayout</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">compare_pos_to_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;vertical&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;before&#39;</span> <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">widget</span><span class="o">.</span><span class="n">center_y</span> <span class="k">else</span> <span class="s1">&#39;after&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;before&#39;</span> <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">widget</span><span class="o">.</span><span class="n">center_x</span> <span class="k">else</span> <span class="s1">&#39;after&#39;</span>
+
+    <span class="k">def</span> <span class="nf">handle_drag_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">drag_widget</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">drag_widget</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DragLabel</span><span class="p">(</span><span class="n">DraggableObjectBehavior</span><span class="p">,</span> <span class="n">Label</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">initiate_drag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># during a drag, we remove the widget from the original location</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">remove_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And then in kv:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">BoxLayout</span><span class="p">:</span>
+    <span class="nt">DraggableBoxLayout</span><span class="p">:</span>
+        <span class="nt">drag_classes</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;label&#39;</span><span class="p p-Indicator">]</span>
+        <span class="nt">orientation</span><span class="p">:</span> <span class="s">&#39;vertical&#39;</span>
+        <span class="nt">Label</span><span class="p">:</span>
+            <span class="nt">text</span><span class="p">:</span> <span class="s">&#39;A&#39;</span>
+        <span class="nt">Label</span><span class="p">:</span>
+            <span class="nt">text</span><span class="p">:</span> <span class="s">&#39;A&#39;</span>
+        <span class="nt">Label</span><span class="p">:</span>
+            <span class="nt">text</span><span class="p">:</span> <span class="s">&#39;A&#39;</span>
+    <span class="nt">DraggableBoxLayout</span><span class="p">:</span>
+        <span class="nt">drag_classes</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;label&#39;</span><span class="p p-Indicator">]</span>
+        <span class="nt">orientation</span><span class="p">:</span> <span class="s">&#39;vertical&#39;</span>
+        <span class="nt">DragLabel</span><span class="p">:</span>
+            <span class="nt">text</span><span class="p">:</span> <span class="s">&#39;A*&#39;</span>
+            <span class="nt">drag_cls</span><span class="p">:</span> <span class="s">&#39;label&#39;</span>
+        <span class="nt">DragLabel</span><span class="p">:</span>
+            <span class="nt">text</span><span class="p">:</span> <span class="s">&#39;A*&#39;</span>
+            <span class="nt">drag_cls</span><span class="p">:</span> <span class="s">&#39;label&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="advanced-example">
+<h2>Advanced Example<a class="headerlink" href="#advanced-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.boxlayout</span> <span class="kn">import</span> <span class="n">BoxLayout</span>
+
+<span class="n">drag_controller</span> <span class="o">=</span> <span class="n">DraggableController</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">DraggableBoxLayout</span><span class="p">(</span><span class="n">DraggableLayoutBehavior</span><span class="p">,</span> <span class="n">BoxLayout</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">compare_pos_to_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widget</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;vertical&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;before&#39;</span> <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">widget</span><span class="o">.</span><span class="n">center_y</span> <span class="k">else</span> <span class="s1">&#39;after&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;before&#39;</span> <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">widget</span><span class="o">.</span><span class="n">center_x</span> <span class="k">else</span> <span class="s1">&#39;after&#39;</span>
+
+    <span class="k">def</span> <span class="nf">handle_drag_release</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">drag_widget</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">drag_widget</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DragLabel</span><span class="p">(</span><span class="n">DraggableObjectBehavior</span><span class="p">,</span> <span class="n">Label</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DragLabel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">drag_controller</span><span class="o">=</span><span class="n">drag_controller</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">initiate_drag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># during a drag, we remove the widget from the original location</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">remove_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="n">kv</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">BoxLayout:</span>
+<span class="s1">    DraggableBoxLayout:</span>
+<span class="s1">        drag_classes: [&#39;label&#39;]</span>
+<span class="s1">        orientation: &#39;vertical&#39;</span>
+<span class="s1">        canvas:</span>
+<span class="s1">            Color:</span>
+<span class="s1">                rgba: (1, 1, 1, .2) if </span><span class="se">\</span>
+<span class="s1">app.drag_controller.dragging and app.drag_controller.widget_dragged and </span><span class="se">\</span>
+<span class="s1">app.drag_controller.widget_dragged.drag_cls == &#39;label&#39; else (0, 0, 0, 0)</span>
+<span class="s1">            Rectangle:</span>
+<span class="s1">                pos: self.pos</span>
+<span class="s1">                size: self.size</span>
+<span class="s1">        Label:</span>
+<span class="s1">            text: &#39;A&#39;</span>
+<span class="s1">        Label:</span>
+<span class="s1">            text: &#39;A&#39;</span>
+<span class="s1">        Label:</span>
+<span class="s1">            text: &#39;A&#39;</span>
+<span class="s1">        Label:</span>
+<span class="s1">            text: &#39;A&#39;</span>
+<span class="s1">        Label:</span>
+<span class="s1">            text: &#39;A&#39;</span>
+<span class="s1">        Label:</span>
+<span class="s1">            text: &#39;A&#39;</span>
+<span class="s1">        DraggableBoxLayout:</span>
+<span class="s1">            padding: &#39;20dp&#39;, 0</span>
+<span class="s1">            drag_classes: [&#39;label2&#39;]</span>
+<span class="s1">            orientation: &#39;vertical&#39;</span>
+<span class="s1">            canvas:</span>
+<span class="s1">                Color:</span>
+<span class="s1">                    rgba: (1, 1, 1, .2) if </span><span class="se">\</span>
+<span class="s1">app.drag_controller.dragging and app.drag_controller.widget_dragged and </span><span class="se">\</span>
+<span class="s1">app.drag_controller.widget_dragged.drag_cls == &#39;label2&#39; else (0, 0, 0, 0)</span>
+<span class="s1">                Rectangle:</span>
+<span class="s1">                    pos: self.pos</span>
+<span class="s1">                    size: self.size</span>
+<span class="s1">            Label:</span>
+<span class="s1">                text: &#39;B&#39;</span>
+<span class="s1">            Label:</span>
+<span class="s1">                text: &#39;B&#39;</span>
+<span class="s1">            Label:</span>
+<span class="s1">                text: &#39;B&#39;</span>
+<span class="s1">    DraggableBoxLayout:</span>
+<span class="s1">        drag_classes: [&#39;label&#39;, &#39;label2&#39;]</span>
+<span class="s1">        orientation: &#39;vertical&#39;</span>
+<span class="s1">        canvas:</span>
+<span class="s1">            Color:</span>
+<span class="s1">                rgba: (1, 1, 1, .2) if app.drag_controller.dragging else (0, 0, 0, 0)</span>
+<span class="s1">            Rectangle:</span>
+<span class="s1">                pos: self.pos</span>
+<span class="s1">                size: self.size</span>
+<span class="s1">        DragLabel:</span>
+<span class="s1">            text: &#39;A*&#39;</span>
+<span class="s1">            drag_cls: &#39;label&#39;</span>
+<span class="s1">        DragLabel:</span>
+<span class="s1">            text: &#39;B*&#39;</span>
+<span class="s1">            drag_cls: &#39;label2&#39;</span>
+<span class="s1">        DragLabel:</span>
+<span class="s1">            text: &#39;A*&#39;</span>
+<span class="s1">            drag_cls: &#39;label&#39;</span>
+<span class="s1">        DragLabel:</span>
+<span class="s1">            text: &#39;B*&#39;</span>
+<span class="s1">            drag_cls: &#39;label2&#39;</span>
+<span class="s1">        DragLabel:</span>
+<span class="s1">            text: &#39;A*&#39;</span>
+<span class="s1">            drag_cls: &#39;label&#39;</span>
+<span class="s1">        DragLabel:</span>
+<span class="s1">            text: &#39;B*&#39;</span>
+<span class="s1">            drag_cls: &#39;label2&#39;</span>
+<span class="s1">        DragLabel:</span>
+<span class="s1">            text: &#39;A*&#39;</span>
+<span class="s1">            drag_cls: &#39;label&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+
+<span class="k">class</span> <span class="nc">MyApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="n">drag_controller</span> <span class="o">=</span> <span class="n">drag_controller</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Builder</span><span class="o">.</span><span class="n">load_string</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
+
+<span class="n">MyApp</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="The Drag-N-Drop API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Kivy
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
